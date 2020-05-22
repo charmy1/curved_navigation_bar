@@ -5,6 +5,7 @@ import 'src/nav_custom_painter.dart';
 
 class CurvedNavigationBar extends StatefulWidget {
   final List<Widget> items;
+  final List<String> titles;
   final int index;
   final Color color;
   final Color buttonBackgroundColor;
@@ -24,7 +25,7 @@ class CurvedNavigationBar extends StatefulWidget {
     this.onTap,
     this.animationCurve = Curves.easeOut,
     this.animationDuration = const Duration(milliseconds: 600),
-    this.height = 75.0,
+    this.height = 75.0, this.titles,
   })  : assert(items != null),
         assert(items.length >= 1),
         assert(0 <= index && index < items.length),
@@ -110,8 +111,9 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
                   0,
                   -(1 - _buttonHide) * 80,
                 ),
-                child: Material(
+                child:Material(
                   color: widget.buttonBackgroundColor ?? widget.color,
+                  //  color: Colors.red,
                   type: MaterialType.circle,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -121,6 +123,7 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
               ),
             ),
           ),
+
           Positioned(
             left: 0,
             right: 0,
@@ -130,6 +133,7 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
                   _pos, _length, widget.color, Directionality.of(context)),
               child: Container(
                 height: 75.0,
+               // child: Text("ONE"),
               ),
             ),
           ),
@@ -147,6 +151,8 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
                     length: _length,
                     index: widget.items.indexOf(item),
                     child: item,
+                    titles: widget.titles,
+
                   );
                 }).toList())),
           ),
@@ -155,7 +161,7 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
     );
   }
 
-  void setPage(int index){
+  void setPage(int index) {
     _buttonTap(index);
   }
 

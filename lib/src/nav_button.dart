@@ -6,8 +6,8 @@ class NavButton extends StatelessWidget {
   final int index;
   final ValueChanged<int> onTap;
   final Widget child;
-
-  NavButton({this.onTap, this.position, this.length, this.index, this.child});
+  final List<String> titles;
+  NavButton({this.onTap, this.position, this.length, this.index, this.child, this.titles});
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +21,24 @@ class NavButton extends StatelessWidget {
         onTap: () {
           onTap(index);
         },
-        child: Container(
-            height: 75.0,
-            child: Transform.translate(
-              offset: Offset(
-                  0, difference < 1.0 / length ? verticalAlignment * 40 : 0),
-              child: Opacity(
-                  opacity: difference < 1.0 / length * 0.99 ? opacity : 1.0,
-                  child: child),
-            )),
+        child: Column(
+          children: <Widget>[
+            Container(
+                height: 75.0,
+                child: Transform.translate(
+                  offset: Offset(
+                      0, difference < 1.0 / length ? verticalAlignment * 40 : 0),
+                  child: Opacity(
+                      opacity: difference < 1.0 / length * 0.99 ? opacity : 1.0,
+                      child: child),
+                )),
+            Opacity(
+              //  opacity: difference < 1.0 / length * 0.99 ? opacity : 1.0,
+              opacity: (difference < 1.0 / length * 0.99)?1.0 :0,
+                child: Text(titles[index],))
+
+          ],
+        ),
       ),
     );
   }
