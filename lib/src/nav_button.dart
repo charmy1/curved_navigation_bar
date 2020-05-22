@@ -36,7 +36,7 @@ class NavButton extends StatelessWidget {
               //  opacity: difference < 1.0 / length * 0.99 ? opacity : 1.0,
               opacity: (difference < 1.0 / length * 0.99)?1.0 :0,
                 child: Text(titles[index],style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 10,
                   color: Colors.grey,
                 )))
 
