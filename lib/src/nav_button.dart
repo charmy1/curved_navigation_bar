@@ -49,7 +49,7 @@ class NavButton extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 5),
                   child: Text(
                     titles[index],
-                    style: TextStyle(fontSize: 11,color: Colors.black12),
+                    style: TextStyle(fontSize: 11,color: colorGrey),
                   ),
                 ))
           ],
@@ -58,3 +58,4 @@ class NavButton extends StatelessWidget {
     );
   }
 }
+const colorGrey=const Color(0xFF9d9d9d);
