@@ -144,6 +144,8 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
             child: SizedBox(
                 height: 100.0,
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: widget.items.map((item) {
                   return NavButton(
                     onTap: _buttonTap,
